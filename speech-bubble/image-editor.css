@@ -41,7 +41,7 @@ section, footer, header, aside, nav{
 	position: absolute;
 	left:50%;
 	margin-left:-150px;
-	top: 80px;
+	top:-65px;
 }
 
 .tooltip:after{

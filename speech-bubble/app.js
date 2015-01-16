@@ -28,6 +28,8 @@
 			$scope.showtooltip = !$scope.showtooltip;
 		}
 
+		console.log($scope);
+
 	});
 
 	app.directive('bubbleDirective', ['$document', function($document) {
@@ -35,74 +37,38 @@
 			restrict: 'E',
 			templateUrl: 'speech-bubble.html',
 			link: function(scope, element, attr) {
-			    var startX = 0, startY = 0, x = 0, y = 0;
+				    var startX = 0, startY = 0, x = 0, y = 0;
 
+				    element.css({
+				     position: 'relative'
+				    });
 
-			    var bubbleElement = element[0].querySelector('.bubble');
+				    var moveIco = element.find('img');
 
-			    element.showtooltip = false;
-				element.value = 'Edit me.';
+				    moveIco.on('mousedown', function(event) {
+				      // Prevent default dragging of selected content
+				      event.preventDefault();
+				      startX = event.pageX - x;
+				      startY = event.pageY - y;
+				      $document.on('mousemove', mousemove);
+				      $document.on('mouseup', mouseup);
+				    });
 
-				// Some helper functions that will be
-				// available in the angular declarations
+				    function mousemove(event) {
+				      y = event.pageY - startY;
+				      x = event.pageX - startX;
+				      element.css({
+				        top: y + 'px',
+				        left:  x + 'px'
+				      });
+				    }
 
-				element.hideTooltip = function(){
-
-					// When a model is changed, the view will be automatically
-					// updated by by AngularJS. In this case it will hide the tooltip.
-
-					element.showtooltip = false;
-				}
-
-				element.toggleTooltip = function(e){
-					e.stopPropagation();
-					element.showtooltip = !element.showtooltip;
-				}
-
-				element.on('click', function(event){
-			    	event.stopPropagation();
-					element.showtooltip = !element.showtooltip;
-			    });
-
-			    element.css({
-			     position: 'relative'
-			     
-			    });
-
-			    element.on('mousedown', function(event) {
-			      // Prevent default dragging of selected content
-			      event.preventDefault();
-			      startX = event.pageX - x;
-			      startY = event.pageY - y;
-			      $document.on('mousemove', mousemove);
-			      $document.on('mouseup', mouseup);
-			    });
-
-			    function mousemove(event) {
-			      y = event.pageY - startY;
-			      x = event.pageX - startX;
-			      element.css({
-			        top: y + 'px',
-			        left:  x + 'px'
-			      });
-
-			      bubbleElement.css({
-			        width: y + 'px'
-			       
-			      });
-
-			    }
-
-			    function mouseup() {
-			      $document.off('mousemove', mousemove);
-			      $document.off('mouseup', mouseup);
-
-			      console.log(element);
-			      console.log(bubbleElement);
-
-			    }
-  			}
-  		};
+				    function mouseup() {
+				      $document.off('mousemove', mousemove);
+				      $document.off('mouseup', mouseup);
+				    }
+				  }
+		};
   	}]);
 
 })();
