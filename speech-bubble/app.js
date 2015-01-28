@@ -23,11 +23,6 @@
 			$scope.showtooltip = false;
 		}
 
-		$scope.toggleTooltip = function(e){
-			e.stopPropagation();
-			$scope.showtooltip = !$scope.showtooltip;
-		}
-
 		console.log($scope);
 
 	});
@@ -36,6 +31,7 @@
 		return {
 			restrict: 'E',
 			templateUrl: 'speech-bubble.html',
+			scope: true,
 			link: function(scope, element, attr) {
 				    var startX = 0, startY = 0, x = 0, y = 0;
 
@@ -67,7 +63,33 @@
 				      $document.off('mousemove', mousemove);
 				      $document.off('mouseup', mouseup);
 				    }
+
+				    scope.toggleTooltip = function(e){
+						e.stopPropagation();
+						scope.showtooltip = !scope.showtooltip;
+					}
+
+					scope.calculateSize = function(){
+
+						bubbleWidth = 150;
+						bubbleHeight = 45;
+						console.log('Scope: ' + scope);
+						if(scope.value.length > 10 && scope.value.length < 31) {
+							bubbleWidth = scope.value.length * 15;
+						}else if(scope.value.length >= 31){
+							bubbleWidth = 450
+						}
+
+						if (scope.value.length > 41) {
+							bubbleHeight = (Math.ceil(scope.value.length / 41 ) * 30) + 45;
+						}
+
+						return 'width: ' + (bubbleWidth) + 'px; height: ' + bubbleHeight + 'px';
+					}
+
 				  }
+
+
 		};
   	}]);
 

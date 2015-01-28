@@ -2,7 +2,7 @@
 <link rel="stylesheet" type="text/css" href="speech-bubble.css" />
 <link rel="stylesheet" type="text/css" href="image-editor.css" />
 
-<div class="bubble" style="width: {{value.length*15 + 'px'}};"> 
+<div class="bubble" style="{{ calculateSize() }}"> 
 	<!-- This is the tooltip. It is shown only when the showtooltip variable is truthful -->
 	<div class="tooltip" ng-click="$event.stopPropagation()" ng-show="showtooltip" style="top:-65px;">
 
@@ -17,9 +17,9 @@
 			<!-- Call a method defined in the InlineEditorController that toggles
 			 the showtooltip variable -->
 			<p ng-click="toggleTooltip($event)">{{value}}</p>
-	<div class="pointer">
+	<!-- <div class="pointer">
 		
-	</div>
+	</div> -->
 	
 	<div class="pointerBorder" style="display: none">
 		
