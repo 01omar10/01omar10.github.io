@@ -1,8 +1,15 @@
 <!DOCTYPE html>
 <html ng-app="speechBubble">
   <head>
-    <script type="text/javascript" src="angular.min.js"></script>
+	<script type="text/javascript" src="components/bower_components/angular/angular.js"></script>
     <script type="text/javascript" src="app.js"></script>
+    <script type="text/javascript" src="components/bower_components/ng-flow/dist/ng-flow-standalone.js"></script>
+
+    <style>
+	    .thumbnail {
+	      max-width: 620px; max-height: 450px; line-height: 20px; margin-bottom: 5px;
+	    }
+	</style>
 
   </head>
 
@@ -11,11 +18,41 @@
 		<!-- When this element is clicked, hide the tooltip -->
 		<div id="main" ng-controller="InlineEditorController" ng-click="hideTooltip()">
 
-			<bubble-directive></bubble-directive>
-			<bubble-directive></bubble-directive>
+			<button ng-click="addBubble()" style="position: absolute; top: 30px; z-index: 15;">Add Bubble</button>
+			<br>
+			<bubble-directive ng-repeat="element in elements"></bubble-directive>
 
-			<img src="Photos/image.jpg" alt="Admios Lunch">
+			<div flow-init="{target: '/components/uploader/upload.php'}"
+			     flow-files-submitted="$flow.upload()"
+			     flow-file-success="$file.msg = $message">
 
+				<div class="container" style="top: 100px; position: absolute; z-index: -10;" >
+				  <h1>flow image example</h1>
+				  <hr class="soften"/>
+
+				  <div >
+				    <div class="thumbnail" ng-hide="$flow.files.length">
+				      <img src="http://www.placehold.it/620x450/EFEFEF/AAAAAA&text=no+image" />
+				    </div>
+				    <div class="thumbnail" ng-show="$flow.files.length">
+				      <img flow-img="$flow.files[0]" style="max-width: 620px; max-height: 450px;"/>
+				    </div>
+				    <div>
+				      <button class="btn" ng-hide="$flow.files.length" flow-btn flow-attrs="{accept:'image/*'}">Select image</button>
+				      <!-- <button class="btn" ng-show="$flow.files.length" flow-btn flow-attrs="{accept:'image/*'}">Change</button> -->
+				      <button class="btn btn-danger" ng-show="$flow.files.length"
+				         ng-click="$flow.cancel()">
+				        Remove
+				      </a>
+				    </div>
+				    <p>
+				      Only PNG,GIF,JPG files allowed.
+				    </p>
+				  </div>
+				</div>
+
+			</div>
 		</div>
+
 	</body>
 </html>

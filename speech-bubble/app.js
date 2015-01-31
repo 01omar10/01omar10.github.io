@@ -1,5 +1,5 @@
 (function() {
-	var app = angular.module('speechBubble', []);
+	var app = angular.module('speechBubble', ['flow']);
 	// The controller is a regular JavaScript function. It is called
 	// once when AngularJS runs into the ng-controller declaration.
 
@@ -11,6 +11,7 @@
 
 		$scope.showtooltip = false;
 		$scope.value = 'Edit me.';
+		$scope.elements = [];
 
 		// Some helper functions that will be
 		// available in the angular declarations
@@ -23,7 +24,10 @@
 			$scope.showtooltip = false;
 		}
 
-		console.log($scope);
+		$scope.addBubble = function() {
+
+			$scope.elements.push($scope.elements.length);
+		}
 
 	});
 
