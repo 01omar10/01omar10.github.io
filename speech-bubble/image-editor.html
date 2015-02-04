@@ -20,7 +20,7 @@
 
 			<button ng-click="addBubble()" style="position: absolute; top: 30px; z-index: 15;">Add Bubble</button>
 			<br>
-			<bubble-directive ng-repeat="element in elements"></bubble-directive>
+			<bubble-directive ng-repeat="element in elements" style="position: absolute;"></bubble-directive>
 
 			<div flow-init="{target: '/components/uploader/upload.php'}"
 			     flow-files-submitted="$flow.upload()"

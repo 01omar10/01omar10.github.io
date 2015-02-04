@@ -26,7 +26,7 @@ section, footer, header, aside, nav{
 	The edit tooltip
 --------------------------*/
 
-.tooltip{
+.bubbletooltip{
 	background-color:#5c9bb7;
 
 	background-image:-webkit-linear-gradient(top, #5c9bb7, #5392ad);
@@ -44,7 +44,7 @@ section, footer, header, aside, nav{
 	top:-65px;
 }
 
-.tooltip:after{
+.bubbletooltip:after{
 	/* The tip of the tooltip */
 	content:'';
 	position:absolute;
@@ -57,7 +57,7 @@ section, footer, header, aside, nav{
 	margin-left:-6px;
 }
 
-.tooltip input{
+.bubbletooltip input{
 	border: none;
 	width: 100%;
 	line-height: 34px;

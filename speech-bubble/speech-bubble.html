@@ -1,27 +1,29 @@
 
-<link rel="stylesheet" type="text/css" href="speech-bubble.css" />
-<link rel="stylesheet" type="text/css" href="image-editor.css" />
+<div style="position: absolute;">
+	<link rel="stylesheet" type="text/css" href="speech-bubble.css" />
+	<link rel="stylesheet" type="text/css" href="image-editor.css" />
 
-<div class="bubble" style="{{ calculateSize() }}"> 
-	<!-- This is the tooltip. It is shown only when the showtooltip variable is truthful -->
-	<div class="tooltip" ng-click="$event.stopPropagation()" ng-show="showtooltip" style="top:-65px;">
+	<div class="bubble" style="{{ calculateSize() }}"> 
+		<!-- This is the tooltip. It is shown only when the showtooltip variable is truthful -->
+		<div class="bubbletooltip" ng-click="$event.stopPropagation()" ng-show="showtooltip" style="top:-65px;">
 
-		<!-- ng-model binds the contents of the text field with the "value" model.
-		 Any changes to the text field will automatically update the value, and
-		 all other bindings on the page that depend on it.  -->
-		<input type="text" ng-model="value" gn-change="update()"/>
-	</div>
+			<!-- ng-model binds the contents of the text field with the "value" model.
+			 Any changes to the text field will automatically update the value, and
+			 all other bindings on the page that depend on it.  -->
+			<input type="text" ng-model="value" gn-change="update()"/>
+		</div>
 
-	<img id="moveIco" src="move_ico.png" width="15" style="cursor: pointer;">
+		<img id="moveIco" src="move_ico.png" width="15" style="cursor: pointer;">
 
-			<!-- Call a method defined in the InlineEditorController that toggles
-			 the showtooltip variable -->
-			<p ng-click="toggleTooltip($event)">{{value}}</p>
-	<!-- <div class="pointer">
+				<!-- Call a method defined in the InlineEditorController that toggles
+				 the showtooltip variable -->
+				<p ng-click="toggleTooltip($event)">{{value}}</p>
+		<!-- <div class="pointer">
+			
+		</div> -->
 		
-	</div> -->
-	
-	<div class="pointerBorder" style="display: none">
-		
+		<div class="pointerBorder" style="display: none">
+			
+		</div>
 	</div>
 </div>

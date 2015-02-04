@@ -76,7 +76,7 @@
 					scope.calculateSize = function(){
 
 						bubbleWidth = 150;
-						bubbleHeight = 45;
+						bubbleHeight = 70;
 						console.log('Scope: ' + scope);
 						if(scope.value.length > 10 && scope.value.length < 31) {
 							bubbleWidth = scope.value.length * 15;
@@ -85,7 +85,7 @@
 						}
 
 						if (scope.value.length > 41) {
-							bubbleHeight = (Math.ceil(scope.value.length / 41 ) * 30) + 45;
+							bubbleHeight = (Math.ceil(scope.value.length / 41 ) * 30) + 70;
 						}
 
 						return 'width: ' + (bubbleWidth) + 'px; height: ' + bubbleHeight + 'px';
