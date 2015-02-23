@@ -2,8 +2,9 @@
 <html lang="en" ng-app="speechBubble">
 <head>
     <script type="text/javascript" src="components/bower_components/angular/angular.js"></script>
-    <script type="text/javascript" src="app.js"></script>
     <script type="text/javascript" src="components/bower_components/ng-flow/dist/ng-flow-standalone.js"></script>
+    <script type="text/javascript" src="js/html2canvas.js"></script>
+    <script type="text/javascript" src="app.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,6 +18,10 @@
 
     <!-- Custom CSS -->
     <link href="css/business-frontpage.css" rel="stylesheet">
+
+    
+    <link rel="stylesheet" type="text/css" href="speech-bubble.css" />
+    <link rel="stylesheet" type="text/css" href="image-editor.css" />
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -85,21 +90,25 @@
                     <button class="btn btn-default" flow-btn flow-attrs="{accept:'image/*'}">Select Image</button>
                     <button class="btn btn-default" ng-click="$flow.cancel()">Remove Image</button>
                     <button type="button" class="btn btn-default" ng-click="addBubble()">Add Speech Bubble</button>
+                    <button id="btnSave" type="button" class="btn btn-default" ng-click="saveImg()">Save Image</button>
                 </div>
             </div>
             <div class="col-sm-8">
-                  <div >
+                  <div id="widget">
 
                     <bubble-directive ng-repeat="element in elements"></bubble-directive>
 
                     <div class="thumbnail" ng-hide="$flow.files.length">
-                      <img src="http://www.placehold.it/620x450/EFEFEF/AAAAAA&text=no+image" />
+                      <img src="http://www.placehold.it/1040x780/EFEFEF/AAAAAA&text=no+image" />
                     </div>
                     <div class="thumbnail" ng-show="$flow.files.length">
-                      <img flow-img="$flow.files[0]" style="max-width: 620px; max-height: 450px;"/>
+                      <img flow-img="$flow.files[0]" style="max-width: 1040px; max-height: 780px;"/>
                     </div>
                       
                   </div>
+
+                  <div id="img-out"></div>
+
             </div>  
         </div>
         <!-- /.row -->

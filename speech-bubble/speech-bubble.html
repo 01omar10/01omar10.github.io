@@ -1,7 +1,6 @@
-
-<div style="position: absolute;">
-	<link rel="stylesheet" type="text/css" href="speech-bubble.css" />
-	<link rel="stylesheet" type="text/css" href="image-editor.css" />
+<!-- Call a method defined in the InlineEditorController that toggles
+				 the showtooltip variable -->
+<div style="position: absolute;" ng-click="toggleTooltip($event)">
 
 	<div class="bubble" style="{{ calculateSize() }}"> 
 		<!-- This is the tooltip. It is shown only when the showtooltip variable is truthful -->
@@ -10,14 +9,10 @@
 			<!-- ng-model binds the contents of the text field with the "value" model.
 			 Any changes to the text field will automatically update the value, and
 			 all other bindings on the page that depend on it.  -->
-			<input type="text" ng-model="value" gn-change="update()"/>
+			<input type="text" ng-model="value"/>
 		</div>
-
-		<img id="moveIco" src="move_ico.png" width="15" style="cursor: pointer;">
-
-				<!-- Call a method defined in the InlineEditorController that toggles
-				 the showtooltip variable -->
-				<p ng-click="toggleTooltip($event)">{{value}}</p>
+				
+		<p>{{value}}</p>
 		<!-- <div class="pointer">
 			
 		</div> -->

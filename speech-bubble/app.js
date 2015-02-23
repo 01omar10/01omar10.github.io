@@ -5,28 +5,27 @@
 
 	app.controller('InlineEditorController', function ($scope){
 
-		// $scope is a special object that makes
-		// its properties available to the view as
-		// variables. Here we set some default values:
 
-		$scope.showtooltip = false;
-		$scope.value = 'Edit me.';
 		$scope.elements = [];
-
-		// Some helper functions that will be
-		// available in the angular declarations
-
-		$scope.hideTooltip = function(){
-
-			// When a model is changed, the view will be automatically
-			// updated by by AngularJS. In this case it will hide the tooltip.
-
-			$scope.showtooltip = false;
-		}
 
 		$scope.addBubble = function() {
 
 			$scope.elements.push($scope.elements.length);
+		}
+
+		$scope.saveImg = function(){
+            html2canvas($("#widget"), {
+                onrendered: function(canvas) {
+                    // theCanvas = canvas;
+                    // document.body.appendChild(canvas);
+
+                    // Convert and download as image 
+                    // Canvas2Image.saveAsPNG(canvas); 
+                    $("#img-out").html(canvas);
+                    // Clean up 
+                    // document.body.removeChild(canvas);
+                }
+            });
 		}
 
 	});
@@ -36,6 +35,25 @@
 			restrict: 'E',
 			templateUrl: 'speech-bubble.html',
 			scope: true,
+			controller: function($scope) {
+				// $scope is a special object that makes
+				// its properties available to the view as
+				// variables. Here we set some default values:
+
+				$scope.showtooltip = false;
+				$scope.value = 'Edit me.';
+
+				// Some helper functions that will be
+				// available in the angular declarations
+
+				$scope.hideTooltip = function(){
+
+					// When a model is changed, the view will be automatically
+					// updated by by AngularJS. In this case it will hide the tooltip.
+
+					$scope.showtooltip = false;
+				}
+			},
 			link: function(scope, element, attr) {
 				    var startX = 0, startY = 0, x = 0, y = 0;
 
@@ -43,11 +61,9 @@
 				     position: 'relative'
 				    });
 
-				    var moveIco = element.find('img');
-
-				    moveIco.on('mousedown', function(event) {
+				    element.on('mousedown', function(event) {
 				      // Prevent default dragging of selected content
-				      event.preventDefault();
+				      
 				      startX = event.pageX - x;
 				      startY = event.pageY - y;
 				      $document.on('mousemove', mousemove);

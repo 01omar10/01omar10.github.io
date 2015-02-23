@@ -1,49 +1,42 @@
-.bubble 
-{
-border-color: rgb(127, 127, 127);
-top: 127.5px;
-background-color: rgb(255, 255, 255);
-position: relative;
-width: 195px;
-height: 70px;
-padding: 10px;
-background: #FFFFFF;
--webkit-border-radius: 80px;
--moz-border-radius: 80px;
-border-radius: 80px;
-border: #000000 solid 4px;
+.bubble {
+    border-color: rgb(127, 127, 127);
+    top: 127.5px;
+    background-color: rgb(255, 255, 255);
+    position: relative;
+    width: 195px;
+    height: 70px;
+    padding: 10px;
+    background: #FFFFFF;
+    -webkit-border-radius: 80px;
+    -moz-border-radius: 80px;
+    border-radius: 80px;
+    border: #000000 solid 4px;
 }
-
-.bubble:after 
-{
-content: '';
-position: absolute;
-border-style: solid;
-border-width: 50px 17px 0;
-border-color: #FFFFFF transparent;
-display: block;
-width: 0;
-z-index: 1;
-bottom: -50px;
-left: 80px;
+.bubble:after {
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 50px 17px 0;
+    border-color: #FFFFFF transparent;
+    display: block;
+    width: 0;
+    z-index: 1;
+    bottom: -50px;
+    left: 80px;
 }
-
-.bubble:before 
-{
-content: '';
-position: absolute;
-border-style: solid;
-border-width: 53px 20px 0;
-border-color: #000000 transparent;
-display: block;
-width: 0;
-z-index: 0;
-bottom: -57px;
-left: 77px;
+.bubble:before {
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 53px 20px 0;
+    border-color: #000000 transparent;
+    display: block;
+    width: 0;
+    z-index: 0;
+    bottom: -57px;
+    left: 77px;
 }
-
-.pointer
-{
+.pointer {
     content: "";
     position: absolute;
     display: block;
@@ -53,12 +46,10 @@ left: 77px;
     border-style: solid;
     border-width: 69px 15px 0;
     border-style: solid;
-	bottom: -69px;
-	left: 91px;
+    bottom: -69px;
+    left: 91px;
 }
-
-.pointerBorder
-{
+.pointerBorder {
     content: "";
     position: absolute;
     display: block;
