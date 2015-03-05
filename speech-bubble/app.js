@@ -33,7 +33,7 @@
 	app.directive('bubbleDirective', ['$document', function($document) {
 		return {
 			restrict: 'E',
-			templateUrl: 'speech-bubble.html',
+			templateUrl: 'components/bubble/speech-bubble.html',
 			scope: true,
 			controller: function($scope) {
 				// $scope is a special object that makes
@@ -101,7 +101,7 @@
 						}
 
 						if (scope.value.length > 41) {
-							bubbleHeight = (Math.ceil(scope.value.length / 41 ) * 30) + 70;
+							bubbleHeight = (Math.ceil(scope.value.length / 41 ) * 30) + 15;
 						}
 
 						return 'width: ' + (bubbleWidth) + 'px; height: ' + bubbleHeight + 'px';

@@ -1,0 +1,24 @@
+<!-- Call a method defined in the InlineEditorController that toggles
+				 the showtooltip variable -->
+<div style="position: absolute;" ng-click="toggleTooltip($event)">
+
+	<div class="bubble" style="{{ calculateSize() }}"> 
+		<!-- This is the tooltip. It is shown only when the showtooltip variable is truthful -->
+		<div class="bubbletooltip" ng-click="$event.stopPropagation()" ng-show="showtooltip" style="top:-65px;">
+
+			<!-- ng-model binds the contents of the text field with the "value" model.
+			 Any changes to the text field will automatically update the value, and
+			 all other bindings on the page that depend on it.  -->
+			<input type="text" ng-model="value"/>
+		</div>
+				
+		<p>{{value}}</p>
+		<!-- <div class="pointer">
+			
+		</div> -->
+		
+		<div class="pointerBorder" style="display: none">
+			
+		</div>
+	</div>
+</div>
